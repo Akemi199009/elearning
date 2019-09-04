@@ -1,0 +1,26 @@
+@import "bootstrap";
+@import "font-awesome";
+
+header {
+  background-color: #e3f2fd;
+  a {
+    font-size: 20px;
+  }
+}
+
+
+body {
+  font-family: 'Lora', serif;
+  .signup_link {
+    font-size: 20px;
+    text-decoration : underline;
+  }
+}
+
+
+
+footer {
+  margin-bottom: 50px;
+}
+
+
