@@ -1,0 +1,45 @@
+@import "bootstrap";
+@import "font-awesome";
+
+header {
+  background-color: #e3f2fd;
+  a {
+    font-size: 20px;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.home {
+  margin-top: 7em;
+  text-align: center;
+  a {
+    font-size: 40px;
+    color: black;
+    text-decoration-line: none;
+  }
+  a:hover {
+      color: darkred;    
+  }
+}
+
+
+.home_image {
+  margin-top: 3rem;
+}
+
+.signup_link {
+  text-align: center;
+  font-size: 20px;
+  text-decoration-line: underline;
+}
+
+
+body {
+  font-family: 'Merriweather', serif;
+}
+
+footer {
+  padding-bottom: 3em;
+}
