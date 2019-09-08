@@ -1,0 +1,25 @@
+    <div class="row">
+        <aside class="col-5">
+            <div class="profile text-center mt-5">
+            <% if current_user.image?%>
+              <%= image_tag current_user.image.url %>
+            <%else%>
+              <%= gravatar_for current_user %>
+            <%end%>
+            <hr/>
+            <h3><%= current_user.name %></h3>
+            <p><%= current_user.email %></p>
+            <%= render 'users/stats_follow' %>
+            <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-dark" %>
+            </div> 
+        </aside>
+
+        <div class="col-7">
+            <div class="activity mt-3">
+                <h2 class="text-center">ACTIVITY</h2>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
+        </div>
+    </div>

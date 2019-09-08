@@ -1,0 +1,43 @@
+    <div class="row">
+        <aside class="col-5">
+            <div class="profile text-center mt-5">
+            <% if @user.image? %>
+                <%= image_tag @user.image.url %>
+            <%else%>
+                <%= gravatar_for @user %>
+            <%end%>
+            <hr/>
+            <h3><%= link_to @user.name, user_path(@user.id) %></h3>
+            <p><%= @user.email %></p>
+            <%= render 'stats_follow'%>
+            <% unless current_user == @user %>
+            <%= render 'follow_form'%>
+            <%end%>
+            </div> 
+        </aside>
+
+        <div class="col-6 offset-1">
+            <div class="follow mt-3">
+                <h2 class="text-center"><%= @title %></h2>
+                <%= will_paginate @users %>
+                <% @users.each do |user| %>
+                    <div class="media mt-4">
+                        <% if user.image? %>
+                            <%= image_tag user.image.url, size: 100 %>
+                        <%else%>
+                            <%= gravatar_for user, size: 100%>
+                        <%end%>
+                        <div class="media-body pl-3 mt-4">
+                        <%= link_to user.name, user_path(user.id) %>
+                        <% if current_user.id == user.id %>
+                        <% elsif Relationship.where(follower_id: current_user.id).find_by(followed_id: user.id)%>
+                        <%= render 'unfollow' %>
+                         <%else%>
+                          <%= render 'follow' %>
+                        <%end%> 
+                        </div>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
