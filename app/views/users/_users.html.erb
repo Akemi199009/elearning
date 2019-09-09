@@ -1,0 +1,22 @@
+<% @users.each do |user| %>
+    <aside class="col-md-6 px-5">
+        <div class="media mb-5">
+            <% if user.image? %>
+                <%= image_tag user.image.url, size: 100%>
+            <%else%>
+                <%= gravatar_for user, size: 100 %>
+            <%end%>
+            <div class="media-body pl-5 mt-4">
+                <h3><%= link_to user.name, user %></h3>
+                <% if current_user == user %>
+                    <%= link_to "Edit", edit_user_path(user), class: "btn btn-dark" %>
+                <%end%>
+                <% if current_user.admin? && current_user != user %>
+                    <%= link_to "Delete", user_path(user),
+                        method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger"%>
+                <%end%>
+            </div>
+        </div>
+    </aside>
+<%end%>
+

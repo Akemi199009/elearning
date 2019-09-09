@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AkemiElearning</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>AkemiElearning</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+    </head>
 
-  <body>
-    <%= render 'layouts/header'%>
-    <div class="container mt-5">
-    <%= yield %>
-    </div>
-    <%= render 'layouts/footer'%>
-  </body>
+    <body>
+        <%= render 'layouts/header'%>
+        <div class="container mt-5 px-0">
+        
+            <% if flash.any? %>
+            <% flash.each do |type, msg| %>
+                <div class="alert alert-<%= type %>">
+                    <div><%= msg %></div>
+                </div>
+            <% end %>
+            <% end %>
+        <%= yield %>
+        </div>
+        <%= render 'layouts/footer'%>
+    </body>
 </html>

@@ -1,0 +1,13 @@
+<div class="stats">
+    <% @user ||= current_user %>
+    <div class="row">
+        <div class="col-lg-6">
+            <h5>Follower</h5>
+            <h5><%= link_to @user.followers.count, followers_user_path(@user.id) %></h5>
+        </div> 
+        <div class="col-lg-6">
+            <h5>Following</h5>
+            <h5><%= link_to @user.following.count, following_user_path(@user.id) %></h5>
+        </div>
+    </div>
+</div>
