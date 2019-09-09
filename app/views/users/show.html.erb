@@ -10,7 +10,14 @@
             <h3><%= @user.name %></h3>
             <p><%= @user.email %></p>
             <%= render 'stats_follow'%>
-            <%= render 'follow_form'%>
+            <% unless current_user == @user %>
+             <% if current_user.following?(@user)%>
+                <%= render 'unfollow', user: @user %>
+            <%else%>
+                <%= render 'follow', user: @user %>
+            <%end%> 
+            <%end%>
+
             </div> 
         </aside>
 

@@ -11,7 +11,11 @@
             <p><%= @user.email %></p>
             <%= render 'stats_follow'%>
             <% unless current_user == @user %>
-            <%= render 'follow_form'%>
+             <% if current_user.following?(@user)%>
+                <%= render 'unfollow', user: @user %>
+            <%else%>
+                <%= render 'follow', user: @user %>
+            <%end%> 
             <%end%>
             </div> 
         </aside>
@@ -29,12 +33,13 @@
                         <%end%>
                         <div class="media-body pl-3 mt-4">
                         <%= link_to user.name, user_path(user.id) %>
-                        <% if current_user.id == user.id %>
-                        <% elsif Relationship.where(follower_id: current_user.id).find_by(followed_id: user.id)%>
-                        <%= render 'unfollow' %>
-                         <%else%>
-                          <%= render 'follow' %>
-                        <%end%> 
+                        <% unless current_user == user %>
+                        <% if current_user.following?(user)%>
+                          <%= render 'unfollow', user: user %>
+                        <%else%>
+                            <%= render 'follow', user: user %>
+                        <%end%>
+                        <% end %>
                         </div>
                     </div>
                 <%end%>

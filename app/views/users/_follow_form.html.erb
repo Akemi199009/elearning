@@ -1,6 +1,8 @@
-                        <% if current_user.id == @user.id %>
-                        <% elsif Relationship.where(follower_id: current_user.id).find_by(followed_id: @user.id)%>
-                        <%= render 'unfollow' %>
-                         <%else%>
-                          <%= render 'follow' %>
-                        <%end%> 
+                        <% unless current_user == @user %>
+                          <% if current_user.following?(@user)%>
+                          <%= render 'unfollow' %>
+                          <%else%>
+                            <%= render 'follow' %>
+                          <%end%> 
+                        <%end%>
+
