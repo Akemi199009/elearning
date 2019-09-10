@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :destroy, :following, :follwers]
   before_action :correct_user, only: [:update, :edit]
-  before_action :admin_user, only: [:destroy]
 
 
   def new
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params) #カラムを全部更新するためには　attributes
       flash[:success] = "Editing was successful."
-      redirect_to root_path
+      redirect_to @user
     else
       render "edit"
     end
@@ -46,7 +45,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id]).destroy
     flash[:success] = "User deleted"
-    redirect_to users_url
+    redirect_to admin_users_url
   end
 
 
@@ -77,9 +76,6 @@ end
     end
   end
 
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
 
   def correct_user #正しいユーザーか確認する
     @user = User.find(params[:id])

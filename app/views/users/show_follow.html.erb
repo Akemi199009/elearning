@@ -27,9 +27,9 @@
                 <% @users.each do |user| %>
                     <div class="media mt-4">
                         <% if user.image? %>
-                            <%= image_tag user.image.url, size: 100 %>
+                            <%= image_tag user.image.url, size: 90 %>
                         <%else%>
-                            <%= gravatar_for user, size: 100%>
+                            <%= gravatar_for user, size: 90 %>
                         <%end%>
                         <div class="media-body pl-3 mt-4">
                         <%= link_to user.name, user_path(user.id) %>

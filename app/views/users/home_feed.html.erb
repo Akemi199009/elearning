@@ -8,9 +8,18 @@
             <%end%>
             <hr/>
             <h3><%= current_user.name %></h3>
-            <p><%= current_user.email %></p>
-            <%= render 'users/stats_follow' %>
             <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-dark" %>
+            <%= render 'users/stats_follow' %>
+            </div>
+            <div class="administration mx-auto text-center mt-4">
+                <% if current_user.admin? %>
+                        <div class="mt-5">
+                            <%= link_to "Users management", admin_users_path, class: "btn btn-dark" %>
+                        </div>
+                        <div class="mt-4">
+                            <%= link_to "Categories management", "#", class: "btn btn-dark" %>
+                        </div>
+                <%end%>
             </div> 
         </aside>
 
