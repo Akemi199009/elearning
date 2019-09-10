@@ -7,7 +7,11 @@ definer_user=mysql.sys
 definer_host=localhost
 suid=0
 with_check_option=0
+<<<<<<< Updated upstream
 timestamp=2019-09-05 03:12:03
+=======
+timestamp=2019-09-09 03:20:15
+>>>>>>> Stashed changes
 create-version=1
 source=SELECT variable_name, variable_value FROM performance_schema.global_status WHERE variable_name LIKE \'perf%lost\' AND variable_value > 0
 client_cs_name=utf8

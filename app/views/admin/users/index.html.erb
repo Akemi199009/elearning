@@ -1,0 +1,64 @@
+<h1 class="text-center">Users</h1>
+<%= will_paginate %>
+<table class="table table-bordered table-dark text-center">
+    <thead>
+        <tr>
+            <td scope="col">#</td>
+            <td scope="col">AVTAR</td>
+            <td scope="col">NAME</td>
+            <td scope="col">E-MAIL</td>
+            <td scope="col">ADMIN</td>
+            <td scope="col">FOLLOW</td>
+            <td scope="col">DELETE<td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+        <th scope="row"><%= user.id%></th>
+             <td>
+                <% if user.image? %>
+                    <%= image_tag user.image.url, class: "profile-item" %>
+                <%else%>
+                    <%= gravatar_for user, size: 80 %>
+                <%end%>
+            </td>
+            <td><%= link_to user.name, user %></td>
+            <td><%= user.email %></td>
+            <% unless current_user == user %>
+            <td>
+                <% unless user.admin? %>
+                    <%= link_to "ADD", admin_user_path(user),
+                                    method: :patch, class: "btn btn-primary"%>
+                <%else %>
+                    <%= link_to "REMOVE", admin_user_path(user),
+                                    method: :patch, class: "btn btn-primary" %>
+                <%end%>
+            </td>
+            <td>
+                <% if current_user.following?(user)%>
+                    <%= form_for current_user.active_relationships.find_by(followed_id: user.id),
+                                                html:{method: :delete} do |f| %>
+
+                    <%= f.submit "Unfollow", scope: "btn btn-primary" %>
+                    <%end%>
+                <%else%>
+                    <%= form_for current_user.active_relationships.build do |f| %>
+                        <%= hidden_field_tag :followed_id, user.id %>
+                    <%= f.submit "Follow", scope: "btn btn-primary"%>
+                    <%end%>
+                <%end%>
+            </td>
+
+            <td>
+                <% if current_user.admin? && current_user != user %>
+                    <%= link_to "Delete", user_path(user),
+                        method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger"%>
+                <%end%>
+            </td>
+             <%end%>
+         </tr>
+        <%end%>
+    </tbody>
+</table>
+

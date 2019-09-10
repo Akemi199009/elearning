@@ -46,12 +46,22 @@ body {
 
 
 
-//----follow--------
+//----userindex--------
+.profile-item {
+  height: 100px;
+  width: 100px;
+}
 
 
 
 //----footer-----
 footer {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 }
 
+//----dashbord------
+.administration {
+  height: 200px;
+  width: 400px;
+  border: double;
+}

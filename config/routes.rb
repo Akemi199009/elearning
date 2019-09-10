@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
   get 'relationships/create'
   get 'relationships/destroy'
-  root 'static_pages#home'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   resources :users, except: :new do
@@ -9,6 +9,13 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  
+  namespace :admin do
+    resources :users
+    resources :categories
+  end
+
+  resources :categories
   resources :sessions, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 end
