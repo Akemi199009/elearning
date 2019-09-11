@@ -1,4 +1,4 @@
-class Categorie < ApplicationRecord
+class Category < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
 

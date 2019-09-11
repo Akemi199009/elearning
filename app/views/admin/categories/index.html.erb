@@ -10,14 +10,14 @@
         </tr>
     </thead>
     <tbody>
-        <% @categories.each do |categorie| %>
+        <% @categories.each do |category| %>
         <tr>
-            <th scope="row"><%= categorie.title %></th>
-            <td><%= categorie.description %></td>
+            <th scope="row"><%= category.title %></th>
+            <td><%= category.description %></td>
             <td>＃</td>
-            <td><%= link_to "DELETE", admin_category_path(categorie),
+            <td><%= link_to "DELETE", admin_category_path(category),
                     method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary btn-danger"%>
-                <%= link_to "EDIT", edit_admin_category_path(categorie),
+                <%= link_to "EDIT", edit_admin_category_path(category),
                                     class: "btn btn-primary"%>
             </td>
         </tr>
