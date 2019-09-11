@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :categories
+    resources :words
   end
 
+  resources :words
   resources :categories
   resources :sessions, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]

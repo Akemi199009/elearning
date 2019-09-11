@@ -1,0 +1,26 @@
+<h1>Categories Management</h1>
+<%= link_to "ADD CATEGORY", new_admin_category_path, class: "btn btn-primary"%>
+<table class="table table-striped table-dark text-center">
+    <thead>
+        <tr>
+            <th scope="col">TITLE</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">WORDS</th>
+            <th scope="col">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @categories.each do |categorie| %>
+        <tr>
+            <th scope="row"><%= categorie.title %></th>
+            <td><%= categorie.description %></td>
+            <td>＃</td>
+            <td><%= link_to "DELETE", admin_category_path(categorie),
+                    method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary btn-danger"%>
+                <%= link_to "EDIT", edit_admin_category_path(categorie),
+                                    class: "btn btn-primary"%>
+            </td>
+        </tr>
+        <%end%>
+    </tbody>
+</table>
