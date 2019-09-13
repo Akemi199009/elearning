@@ -35,7 +35,10 @@ def create
   if @word.save
     flash[:success] = "Create New Word!"
     redirect_to admin_category_words_path
+  else
+    render "new"
   end
+  puts @word.errors.full_messages
 end
 
 def destroy

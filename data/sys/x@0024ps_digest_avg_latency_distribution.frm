@@ -7,11 +7,7 @@ definer_user=mysql.sys
 definer_host=localhost
 suid=0
 with_check_option=0
-<<<<<<< Updated upstream
-timestamp=2019-09-05 03:12:04
-=======
-timestamp=2019-09-09 03:20:16
->>>>>>> Stashed changes
+timestamp=2019-09-13 01:17:17
 create-version=1
 source=SELECT COUNT(*) cnt,  ROUND(avg_timer_wait/1000000) AS avg_us FROM performance_schema.events_statements_summary_by_digest GROUP BY avg_us
 client_cs_name=utf8

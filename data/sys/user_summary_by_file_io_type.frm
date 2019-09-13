@@ -7,11 +7,7 @@ definer_user=mysql.sys
 definer_host=localhost
 suid=0
 with_check_option=0
-<<<<<<< Updated upstream
-timestamp=2019-09-05 03:12:04
-=======
-timestamp=2019-09-09 03:20:16
->>>>>>> Stashed changes
+timestamp=2019-09-13 01:17:17
 create-version=1
 source=SELECT IF(user IS NULL, \'background\', user) AS user, event_name, count_star AS total, sys.format_time(sum_timer_wait) AS latency, sys.format_time(max_timer_wait) AS max_latency FROM performance_schema.events_waits_summary_by_user_by_event_name WHERE event_name LIKE \'wait/io/file%\' AND count_star > 0 ORDER BY user, sum_timer_wait DESC
 client_cs_name=utf8
