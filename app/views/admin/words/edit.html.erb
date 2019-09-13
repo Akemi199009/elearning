@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+    <h2 class="text-center" >Edit word</h2>
+    <%= form_with model: [:admin, @category, @word], local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-word">
+            <%= f.label :content, "Word" %>
+            <%= f.text_field :content, class: "form-control" %><br>
+        </div>
+       <%= f.fields_for :choices do |i| %>
+        <div class="form-group">
+            <%= i.label :content, "Choice" %><br>
+            <%= i.text_field :content, class: "form-control" %>
+            <%= i.check_box :correct %>
+        </div>
+        <%end%>
+            <%= f. submit "save", class: "btn btn-primary btn-block"%>
+    <%end%>
+    <%= link_to "BACK", admin_categories_path %>
+    </div>
+</div>
+
+

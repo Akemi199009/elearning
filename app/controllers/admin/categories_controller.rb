@@ -42,11 +42,14 @@ class CategoriesController < ApplicationController
 
   private
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+        unless current_user.admin?
+            flash[:danger] = "User not authorized"
+            redirect_to(root_url)
+        end
     end
 
     def category_params
-      params.require(:category).permit(:title, :description)
+        params.require(:category).permit(:title, :description)
     end
 
     def category_details

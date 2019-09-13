@@ -21,7 +21,10 @@ module Admin
 
 private
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+      unless current_user.admin?
+        flash[:danger] = "User not authorized"
+        redirect_to(root_url)
+      end
     end
   
   

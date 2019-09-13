@@ -12,12 +12,18 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :users
-    resources :categories
-    resources :words
+    resources :categories do
+      resources :words do
+        resources :choices
+      end
+    end
   end
 
-  resources :words
-  resources :categories
+  resources :categories do
+    resources :words do
+      resources :choices
+end
+end
   resources :sessions, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 end

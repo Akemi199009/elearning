@@ -5,8 +5,4 @@ definers='mysql.sys@localhost' 'mysql.sys@localhost'
 client_cs_names='utf8' 'utf8'
 connection_cl_names='utf8_general_ci' 'utf8_general_ci'
 db_cl_names='utf8_general_ci' 'utf8_general_ci'
-<<<<<<< Updated upstream
-created=156765312372 156765312373
-=======
-created=156799921581 156799921582
->>>>>>> Stashed changes
+created=156833743724 156833743725
