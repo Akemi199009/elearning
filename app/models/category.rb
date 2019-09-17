@@ -4,5 +4,7 @@ class Category < ApplicationRecord
 
   has_many :words, foreign_key: "category_id", dependent: :destroy
 
+  has_many :lessons, foreign_key: "category_id", dependent: :destroy
+
   
 end

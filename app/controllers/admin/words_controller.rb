@@ -41,6 +41,7 @@ def create
   puts @word.errors.full_messages
 end
 
+
 def destroy
   @word = Word.find(params[:id])
   @word.destroy

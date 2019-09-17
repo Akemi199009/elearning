@@ -34,6 +34,9 @@ has_many :following, through: :active_relationships,
 has_many :followers, through: :passitive_relationships,
                       source: :follower
 
+has_many :lessons, foreign_key: "user_id", dependent: :destroy
+
+
 def follow(other_user)
   following << other_user
 end

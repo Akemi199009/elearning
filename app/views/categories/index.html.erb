@@ -1,0 +1,20 @@
+<h1 class="text-center">Categories</h1>
+<%= will_paginate %>
+<div class="row lesson-object">
+    <% @categories.each do |category|%>
+    <div class="col-md-5 mx-auto mb-4">
+        <article class="card h-100 p-1">
+            <div class="card-body">
+                <h4 class="text-center"><%= category.title %></h4>
+                <h5><%= category.description %></h5>
+                <h5>[ <%= category.words.count %> words]</h5>
+                <%= form_for current_user.lessons.build do |f| %>
+                    <%= hidden_field_tag :category_id, category.id %>
+                    <%= f.submit "Learn", class: "btn btn-primary btn-block"%>
+                <%end%>
+            </div>
+        </div>
+    <%end%> 
+    </div>
+</div>
+
