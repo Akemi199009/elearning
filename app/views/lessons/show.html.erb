@@ -6,7 +6,7 @@
                 <h1><%= @lesson.category.title%></h1>
             </div>
             <div class="col-6 text-right">
-                <h1>Result:<%= @lesson.result %> of <%= @lesson.words.count %></h1>
+                <h3>Result:<%= @lesson.result %> of <%= @lesson.words.count %></h3>
             <div> 
         </div>
     </div>  
@@ -28,16 +28,17 @@
                 <%# correct answer %>
                 <td><%= answer.word.correct_choice.content%></td>
                 <td>
-                <% if answer.choice.correct? %>
-                    <p>✔︎</p>
-                <%else%>
-                    <p>❌</p>
-                <%end%>
+                    <% if answer.choice.correct? %>
+                        <p>✔︎</p>
+                    <%else%>
+                        <p>❌</p>
+                    <%end%>
                 </td>
                 </tr>
         <%end%>
     </tbody>
     </table>
+    <%= link_to "Back", categories_path %>
     </div>
     </div>
 </div>

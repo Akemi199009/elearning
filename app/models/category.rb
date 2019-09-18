@@ -6,5 +6,6 @@ class Category < ApplicationRecord
 
   has_many :lessons, foreign_key: "category_id", dependent: :destroy
 
+
   
 end

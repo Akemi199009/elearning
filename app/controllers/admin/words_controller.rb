@@ -38,7 +38,6 @@ def create
   else
     render "new"
   end
-  puts @word.errors.full_messages
 end
 
 

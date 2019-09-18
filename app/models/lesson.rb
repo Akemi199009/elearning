@@ -10,4 +10,6 @@ class Lesson < ApplicationRecord
   has_many :choices, through: :answers
 
 
+
+
 end

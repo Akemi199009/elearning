@@ -1,20 +1,30 @@
 <h1 class="text-center">Categories</h1>
-<%= will_paginate %>
+<%= will_paginate @categories %>
 <div class="row lesson-object">
     <% @categories.each do |category|%>
     <div class="col-md-5 mx-auto mb-4">
         <article class="card h-100 p-1">
             <div class="card-body">
-                <h4 class="text-center"><%= category.title %></h4>
+                <% if lesson(category).result && category.words == lesson(category).words %>
+                    <div class="badge badge-secondary float-right">
+                        Scored <%= lesson(category).result%> of <%= category.words.count%></div>
+                <%end%>
+                <h3><%= category.title %></h3>
                 <h5><%= category.description %></h5>
                 <h5>[ <%= category.words.count %> words]</h5>
-                <%= form_for current_user.lessons.build do |f| %>
-                    <%= hidden_field_tag :category_id, category.id %>
-                    <%= f.submit "Learn", class: "btn btn-primary btn-block"%>
+                <% if lesson(category).result && category.words == lesson(category).words %>
+                    <%= link_to "Show result", lesson_path(lesson(category)),
+                                               class: "btn btn-outline-secondary btn-block"%>
+                <%else%>
+                    <%= form_for current_user.lessons.build do |f| %>
+                        <%= hidden_field_tag :category_id, category.id %>
+                        <%= f.submit "Learn", class: "btn btn-primary btn-block"%>
+                    <%end%>
                 <%end%>
             </div>
         </div>
     <%end%> 
     </div>
 </div>
+
 
