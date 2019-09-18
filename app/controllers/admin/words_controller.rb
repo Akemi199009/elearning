@@ -38,8 +38,8 @@ def create
   else
     render "new"
   end
-  puts @word.errors.full_messages
 end
+
 
 def destroy
   @word = Word.find(params[:id])

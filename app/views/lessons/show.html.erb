@@ -1,0 +1,44 @@
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="row">
+            <div class="col-6">
+                <h1><%= @lesson.category.title%></h1>
+            </div>
+            <div class="col-6 text-right">
+                <h3>Result:<%= @lesson.result %> of <%= @lesson.words.count %></h3>
+            <div> 
+        </div>
+    </div>  
+    <table class="table table-striped text-center">
+    <thead>
+        <tr>
+        <th scope="col">Word</th>
+        <th scope="col">Your answer</th>
+        <th scope="col">CorrectAnswer</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @lesson.answers.each do |answer| %>
+                <tr>
+                <td><%= answer.word.content %></td>
+                <%# user answer %>
+                <td><%= answer.choice.content %></td>
+                <%# correct answer %>
+                <td><%= answer.word.correct_choice.content%></td>
+                <td>
+                    <% if answer.choice.correct? %>
+                        <p>✔︎</p>
+                    <%else%>
+                        <p>❌</p>
+                    <%end%>
+                </td>
+                </tr>
+        <%end%>
+    </tbody>
+    </table>
+    <%= link_to "Back", categories_path %>
+    </div>
+    </div>
+</div>

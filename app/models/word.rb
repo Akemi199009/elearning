@@ -1,10 +1,11 @@
 class Word < ApplicationRecord
   validates :content, presence: true
 
-  belongs_to :category, class_name: "Category", optional: true
+  belongs_to :category
   has_many :choices, dependent: :destroy
   accepts_nested_attributes_for :choices, allow_destroy: true
 
+  has_many :answers
 
   validate :check_one_choices
 
@@ -15,6 +16,10 @@ class Word < ApplicationRecord
    elsif one_choices_count == 0
     errors.add(:choices, "Please choose one correct answer.")
    end
+ end
+
+ def correct_choice
+  choices.find_by(correct: true)
  end
  
 

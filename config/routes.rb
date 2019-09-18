@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/index'
   root 'static_pages#home'
   get 'relationships/create'
   get 'relationships/destroy'
@@ -11,19 +12,21 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    resources :users
-    resources :categories do
-      resources :words do
+    resources :users, only: [:index, :update]
+    resources :categories, except: :show do
+      resources :words, except: :show do
         resources :choices
       end
     end
   end
 
+
   resources :categories do
-    resources :words do
-      resources :choices
+    resources :answers
 end
-end
+
+resources :lessons
+
   resources :sessions, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 end
