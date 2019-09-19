@@ -17,6 +17,10 @@ class AnswersController < ApplicationController
     if @answer.save
      @lesson.result = @lesson.choices.select { |choice| choice.correct?} .count
      @lesson.save
+     #create activite
+     if @lesson.category.words.count == @lesson.words.count
+        @lesson.activities.create(user_id: current_user.id)
+     end
     redirect_to new_category_answer_path
     end
   end

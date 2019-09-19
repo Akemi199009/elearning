@@ -1,0 +1,35 @@
+<%if activity.action_type == 'Lesson' && activity.action.user == current_user %> 
+    <div class="media mb-4">
+        <% if current_user.image?%>
+            <%= image_tag current_user.image.url, class: "activity-item" %>
+        <%else%>
+            <%= gravatar_for current_user, size: 70 %>
+        <%end%>
+        <div class="media-body ml-2">
+            <h5>You learned
+                <%= activity.action.result %> of <%= activity.action.category.words.count%>
+                <%=link_to activity.action.category.title,
+                new_category_answer_path(activity.action.category), class: "badge badge-primary"%>                        
+            </h5>
+            <span><%= time_ago_in_words(activity.created_at)%> ago</span>
+        </div>
+    </div>
+<%elsif activity.action_type == 'Lesson' && current_user.following?(activity.action.user) %>
+    <div class="media mb-4">
+        <% if activity.action.user.image?%>
+            <%= image_tag activity.action.user.image.url, class: "activity-item" %>
+        <%else%>
+            <%= gravatar_for activity.action.user, size: 70 %>
+        <%end%>
+        <div class="media-body ml-2">
+            <h5>
+               <%= link_to activity.action.user.name,user_path(activity.action.user) %> 
+                learned
+                <%= activity.action.result %> of <%= activity.action.category.words.count%>
+                <%=link_to activity.action.category.title,
+                new_category_answer_path(activity.action.category), class: "badge badge-primary"%>                        
+            </h5>
+            <span><%= time_ago_in_words(activity.created_at)%> ago</span>
+        </div>
+    </div>
+<%end%>

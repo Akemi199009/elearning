@@ -20,13 +20,11 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :categories do
     resources :answers
 end
 
-resources :lessons
-
+  resources :lessons
   resources :sessions, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 end

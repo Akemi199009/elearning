@@ -15,6 +15,8 @@ User.create!(
  )
 end
 
+
+
  #Following relationships
  users = User.all
  user = User.first
