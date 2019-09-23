@@ -8,24 +8,13 @@
             <%end%>
             <hr/>
             <h3><%= current_user.name %></h3>
-            <%= link_to "Edit activity", edit_user_path(current_user), class: "btn btn-dark" %>
+            <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-dark" %>
             <%= render 'users/stats_follow' %>
             </div>
-            <% if current_user.admin? %>
-                <div class="administration mx-auto text-center mt-4">
-                    <div class="mt-5">
-                        <%= link_to "Users management", admin_users_path, class: "btn btn-dark" %>
-                    </div>
-                    <div class="mt-4">
-                        <%= link_to "Categories management", admin_categories_path, class: "btn btn-dark" %>
-                    </div>
-                </div> 
-            <%end%>
         </aside>
-
         <div class="col-7">
             <div class="activity mt-3">
-                <h2 class="text-center">ACTIVITY</h2>
+                <h2>ACTIVITY</h2>
                 <% @activities.each do |activity| %>
                     <% if activity.action_type == "Lesson" %>
                         <%= render "users/dashbord_activity_lesson", activity: activity %>

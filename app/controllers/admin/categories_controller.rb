@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :category_details, only: [:edit, :update, :destroy]
 
   def index
-    @categories = Category.paginate(page: params[:page], per_page: 10)
+    @categories = Category.paginate(page: params[:page], per_page: 6)
   end
 
   def new

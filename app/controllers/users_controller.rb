@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @activities = Activity.paginate(page: params[:page], per_page: 8)
+    @activities = Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
   end
 
   def create

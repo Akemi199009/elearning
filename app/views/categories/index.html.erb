@@ -1,16 +1,29 @@
-<h1 class="text-center">Categories</h1>
-<%= will_paginate @categories %>
+<h1 class="lesson-title text-center">Lessons</h1>
+<p class="text-center">Language Acquisition Tools page is a great place to start!</p>
+<%# <%= will_paginate @categories %> %>
+<ul class="nav nav-pills nav-warning float-right justify-content-end">
+    <li class="nav-item">
+        <%= link_to "All", categories_path %>
+    </li>
+        <li class="nav-item">
+        <%= link_to "Learned", categories_path(status: :learned)%>
+    </li>
+    <li class="nav-item">
+        <%= link_to "Not laernd", categories_path(status: :anlearned)%>
+    </li>
+</ul>
 <div class="row lesson-object">
     <% @categories.each do |category|%>
         <% if category.words.count > 0 %>
-            <div class="col-md-5 mx-auto mb-4">
-                <article class="card h-100 p-1">
+            <div class="col-md-5 mx-auto mt-4">
+                <article class="card h-100 p-1 border-0">
                     <div class="card-body">
                         <% if lesson(category) && category.words == lesson(category).words %>
                             <div class="badge badge-secondary float-right">
-                                Scored <%= lesson(category).result %> of <%= category.words.count%></div>
+                                Scored <%= lesson(category).result %> of <%= category.words.count%>
+                            </div>
                         <%end%>
-                        <h3><%= category.title %></h3>
+                        <h3 class="category-title"><%= category.title %></h3>
                         <h5><%= category.description %></h5>
                         <h5>[ <%= category.words.count %> words]</h5>
                         <% if lesson(category) && category.words == lesson(category).words %>
