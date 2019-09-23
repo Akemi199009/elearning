@@ -1,0 +1,48 @@
+<% if activity.action_type == "Relationship" && activity.action.follower == current_user %>
+    <div class="media mb-4">
+        <% if activity.action.followed.image?%>
+            <%= image_tag activity.action.followed.image.url, class: "activity-item" %>
+        <%else%> 
+            <%= gravatar_for activity.action.followed, size: 70 %>
+        <%end%>
+        <div class="media-body ml-2">
+            <h5>You following
+                <%=link_to activity.action.followed.name,
+                user_path(activity.action.followed),class: "badge badge-secondary"%>
+            </h5>
+            <span class="time_ago"><%= time_ago_in_words(activity.created_at)%> ago</span>
+        </div>
+    </div>
+<% elsif activity.action_type == "Relationship" && activity.action.followed == current_user %>
+        <div class="media mb-4"> 
+        <% if activity.action.follower.image?%>
+            <%= image_tag activity.action.follower.image.url, class: "activity-item" %>
+        <%else%> 
+            <%= gravatar_for activity.action.follower, size: 70 %>
+        <%end%>
+        <div class="media-body ml-2">
+            <h5>You followed 
+                <%=link_to activity.action.follower.name,
+                user_path(activity.action.follower),class: "badge badge-secondary"%>
+            </h5>
+            <span class="time_ago"><%= time_ago_in_words(activity.created_at)%> ago</span>
+        </div>
+    </div>
+<%elsif activity.action_type == "Relationship" &&  current_user.following?(activity.action.follower)%>
+        <div class="media mb-4"> 
+        <% if activity.action.follower.image?%>
+            <%= image_tag activity.action.follower.image.url, class: "activity-item" %>
+        <%else%> 
+            <%= gravatar_for activity.action.follower, size: 70 %>
+        <%end%>
+        <div class="media-body ml-2">
+            <h5>
+               <%= link_to activity.action.follower.name,user_path(activity.action.follower) %> 
+                followed
+                <%=link_to activity.action.followed.name,
+                user_path(activity.action.followed),class: "badge badge-secondary"%>
+            </h5>
+            <span class="time_ago"><%= time_ago_in_words(activity.created_at)%> ago</span>
+        </div>
+    </div>
+<% end %>

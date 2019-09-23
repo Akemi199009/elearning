@@ -1,6 +1,20 @@
 <div class="home">
-  <%= link_to "Get started now!", login_path %>
-  <div class="home_image text-center">
-    <%= link_to image_tag("home_image.png", alt:"home_image", size: '500x400'), login_path %>
-  </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="jumbotron">
+            <h1 class="title display-4">Boost your English learning</h1>
+            <p class="lead">
+                Step-by-step learning with fun, interactive games.<br/>
+                Progress tracking to celebrate learning successes.
+            </p>
+            <%= link_to "Sign up", signup_path, class: "btn btn-dark" %>     
+        </div>
+    </div>
+    <div class="col-md-6">
+        <%= embedded_svg("drone.svg", class: "svg") %>
+        <div class="home_image">
+            <%= link_to image_tag("home_image.png", alt:"home_image", size: '500x400'), login_path %>
+        </div>
+    </div>
+</div>
 </div>

@@ -1,11 +1,13 @@
 @import "bootstrap";
-@import "font-awesome";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 //-----header------
 header {
-  background-color: #e3f2fd;
+  background-color: white;
   a {
     font-size: 20px;
+    color: rgb(63, 60, 60);
   }
   a:hover {
     text-decoration: none;
@@ -15,20 +17,131 @@ header {
 
 //-----home--------
 .home {
-  margin-top: 7em;
-  text-align: center;
+  margin-top: 10em;
+  margin-bottom: 0;
+  height: 35rem;
+  background-image: url("cap-line.svg");
+  background-size: contain;
+
   a {
-    font-size: 40px;
-    color: black;
+    font-size: 18px;
+    color: white;
     text-decoration-line: none;
   }
-  a:hover {
-      color: darkred;    
+  .jumbotron {
+    background-color: transparent;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .title {
+    color: palevioletred;
+    font-family: 'Fredoka One', cursive;
   }
 }
 
+
+
+
 .home_image {
-  margin-top: 3rem;
+  margin-top: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+//---------icon-------------
+svg {
+  text-align: center;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+}
+
+#icon-drone {
+  -webkit-animation: drone linear 5s;
+  animation: drone linear 5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+@-webkit-keyframes drone {
+  0% {
+          -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  }
+
+  17% {
+          -webkit-transform: translate(20px, 20px);
+          transform: translate(20px, 20px);
+  }
+
+  33% {
+          -webkit-transform: translate(-10px, -20px);
+          transform: translate(-10px, -20px);
+  }
+
+  50% {
+          -webkit-transform: translate(-20px, -8px);
+          transform: translate(-20px, -8px);
+  }
+
+  67% {
+          -webkit-transform: translate(-32px, -15px);
+          transform: translate(-32px, -15px);
+  }
+
+  84% {
+          -webkit-transform: translate(28px, -24px);
+          transform: translate(28px, -24px);
+  }
+
+  100% {
+          -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  }
+}
+
+@keyframes drone {
+  0% {
+          -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  }
+
+  17% {
+          -webkit-transform: translate(20px, 20px);
+          transform: translate(20px, 20px);
+  }
+
+  33% {
+          -webkit-transform: translate(-10px, -20px);
+          transform: translate(-10px, -20px);
+  }
+
+  50% {
+          -webkit-transform: translate(-20px, -8px);
+          transform: translate(-20px, -8px);
+  }
+
+  67% {
+          -webkit-transform: translate(-32px, -15px);
+          transform: translate(-32px, -15px);
+  }
+
+  84% {
+          -webkit-transform: translate(28px, -24px);
+          transform: translate(28px, -24px);
+  }
+
+  100% {
+          -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  }
 }
 
 .signup_link {
@@ -41,8 +154,13 @@ header {
 
 //----body----------
 body {
-  font-family: 'Merriweather', serif;
+  font-family: 'Darker Grotesque', sans-serif;
+  color: rgb(92, 87, 87);
+  h1 {
+    font-weight: 700;
+  }
 }
+
 
 
 
@@ -50,6 +168,61 @@ body {
 .profile-item {
   height: 100px;
   width: 100px;
+}
+
+.user_name {
+  font-size: 25px;
+  a {
+    text-decoration: none;
+    color: gray;
+  }
+}
+
+//---admin user index -------
+.user-name {
+  font-size: 20px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+//--------lesson ------------
+
+.lesson-title {
+  color: orange;
+}
+.category-title {
+  font-weight: 700;
+}
+
+article.card {
+  background-color: #F0F8FF;
+}
+
+.word-object {
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  color: orange;
+}
+
+.word-count {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.new_answer {
+  .btn {
+    font-size: 22px;
+    font-family: 'Fredoka One', cursive;
+    font-weight: 300;
+    border-radius: 50px;
+  }
+}
+
+.word-card {
+  border-color: lightcoral;
+  border-width: 10px;
 }
 
 
@@ -60,10 +233,24 @@ footer {
 }
 
 //----dashbord------
-.administration {
-  height: 200px;
-  width: 400px;
-  border: double;
+
+//---activities-------
+
+.activity-item {
+    height: 70px;
+    width: 70px;
 }
 
-//---lessons-------
+.time_ago {
+  color: gray;
+}
+
+.activity {
+  padding-left: 4em;
+  h2 {
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    padding-bottom: 2rem;
+    color: palevioletred;
+  }
+}

@@ -36,13 +36,19 @@ has_many :followers, through: :passitive_relationships,
 
 has_many :lessons, foreign_key: "user_id", dependent: :destroy
 
+has_many :activities
+
+def recent_activities(limit)
+  activities.order('created_at DESC').limit(limit)
+end
+
 
 def follow(other_user)
   following << other_user
 end
 
 def unfollow(other_user)
-  following.delete(other_user)
+  active_relationships.find_by(followed_id: other_user.id).destroy
 end
 
 def following?(other_user)

@@ -1,0 +1,16 @@
+<% if activity.action_type == "Relationship" && activity.action.follower == @user %>
+    <div class="media mb-4">
+        <% if activity.action.followed.image?%>
+            <%= image_tag activity.action.followed.image.url, class: "activity-item" %>
+        <%else%> 
+            <%= gravatar_for activity.action.followed, size: 70 %>
+        <%end%>
+        <div class="media-body ml-2">
+            <h5><%= @user.name%> followed
+                <%=link_to activity.action.followed.name,
+                user_path(activity.action.followed),class: "badge badge-secondary"%>
+            </h5>
+            <span class="time_ago"><%= time_ago_in_words(activity.created_at)%> ago</span>
+        </div>
+    </div>
+<% end %>

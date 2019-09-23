@@ -2,21 +2,21 @@
     <div class="col-md-8 mx-auto">
         <div class="row">
             <div class="col-md-9">
-                <h2><%= @lesson.category.title %></h2>
+                <h2 class="category-title"><%= @lesson.category.title %></h2>
             </div>
             <div class="col-md-3">
-                <h2><%= (@lesson.answers.count)+1 %>of<%= @lesson.category.words.count%></h2>
+                <h3 class="word-count"><%= (@lesson.answers.count)+1 %> of <%= @lesson.category.words.count%></h3>
             </div>
         </div>
-        <div class="card mt-3 p-4">
-            <h3 class="text-center"><%= @words.first.content%></h3>
-            <div class="card-body text-center">
+        <div class="card word-card mt-3 p-4">
+            <h1 class="word-object"><%= @words.first.content%></h1>
+            <div class="card-body word-choices px-5">
                 <% @words.first.choices.each do |choice|%>
                     <%= form_for([:category, @answer]) do |f| %>
                         <%= f.hidden_field :choice_id, value: choice.id %>
                         <%= f.hidden_field :word_id, value: @words.first.id %>
                         <%= f.hidden_field :lesson_id, value: @lesson.id %>
-                        <%= f.submit choice.content, class: "btn btn-primary btn-block"%><br/>
+                        <%= f.submit choice.content, class: "btn btn btn-info btn-block"%><br/>
                     <%end%>
                 <%end%>
             </div>

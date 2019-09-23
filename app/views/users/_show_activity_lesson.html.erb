@@ -1,0 +1,17 @@
+<%if activity.action_type == 'Lesson' && activity.action.user == @user %> 
+    <div class="media mb-4">
+        <% if @user.image?%>
+            <%= image_tag @user.image.url, class: "activity-item" %>
+        <%else%>
+            <%= gravatar_for @user, size: 70 %>
+        <%end%>
+        <div class="media-body ml-2">
+            <h5><%= @user.name %> learned
+                <%= activity.action.result %> of <%= activity.action.category.words.count%>
+                <%=link_to activity.action.category.title,
+                new_category_answer_path(activity.action.category), class: "badge badge-primary"%>                        
+            </h5>
+            <span class="time_ago"><%= time_ago_in_words(activity.created_at)%> ago</span>
+        </div>
+    </div>
+<%end%>
