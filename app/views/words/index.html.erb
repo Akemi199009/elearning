@@ -1,0 +1,55 @@
+    <div class="row">
+        <aside class="col-5">
+            <div class="activity text-center mt-5">
+            <% if current_user.image?%>
+              <%= image_tag current_user.image.url %>
+            <%else%>
+              <%= gravatar_for current_user %>
+            <%end%>
+            <hr/>
+            <h3><%=link_to current_user.name, root_path%></h3>
+            <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-dark" %>
+            <%= render 'users/stats_follow' %>
+            </div>
+        </aside>
+        <div class="col-7">
+            <%if @answers %>
+                <div class="words_learned mb-5">
+                    <h2>Words learned</h2>
+                    <%= form_tag(user_words_path, { method: :get, id: 'words'}) do |f| %>
+                        <%= label_tag :category %>
+                        <%= select_tag :status, options_from_collection_for_select(@categories, :id, :title, params[:status]), onchange: "$('#words').submit();",:include_blank => "All Larned" %>
+                    <%end%> 
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr>
+                            <th scope="col">Word</th>
+                            <th scope="col">Your answer</th>
+                            <th scope="col">CorrectAnswer</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @answers.each do |answer| %>
+                                <tr>
+                                <td><%= answer.word.content %></td>
+                                <%# user answer %>
+                                <td><%= answer.choice.content %></td>
+                                <%# correct answer %>
+                                <td><%= answer.word.correct_choice.content%></td>
+                                <td>
+                                    <% if answer.choice.correct? %>
+                                        <p>✔︎</p>
+                                    <%else%>
+                                        <p>❌</p>
+                                    <%end%>
+                                </td>
+                                </tr>
+                            <%end%>
+                        </tbody>
+                    </table>
+                    <%= will_paginate @answers %>
+                </div>
+            <%end%>
+        </div>
+    </div>

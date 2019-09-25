@@ -12,7 +12,7 @@
             <%= render 'users/stats_follow' %>
             <hr/>
             <h5>Words learned</h5>
-            <h3><%= link_to @answers.count, root_path(status: :words) %></h3>
+            <h3><%= link_to @answers.count, user_words_path(current_user) %></h3>
             </div>
         </aside>
         <div class="col-7">
