@@ -234,6 +234,35 @@ footer {
 
 //----dashbord------
 
+.words_learned {
+  padding-left: 3rem;
+  h2 {
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    color: cornflowerblue;
+  }
+}
+
+//---activities-------
+
+.activity-item {
+    height: 70px;
+    width: 70px;
+}
+
+.time_ago {
+  color: gray;
+}
+
+.activity {
+  padding-left: 4em;
+  h2 {
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    padding-bottom: 2rem;
+    color: palevioletred;
+  }
+}
 //---activities-------
 
 .activity-item {

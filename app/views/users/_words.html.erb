@@ -1,0 +1,37 @@
+<%= will_paginate @answers %>
+<%= form_for root_path, method: :get do |f| %>
+    <%= f.label :category %>
+    <%= f.select :category, options_for_select(@categories.all.map{|c| [c.title, c.id]}), id: 'categories',
+    :include_blank => "All Larned" %>
+<%end%> 
+<script>
+
+</script>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+        <th scope="col">Word</th>
+        <th scope="col">Your answer</th>
+        <th scope="col">CorrectAnswer</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @answers.each do |answer| %>
+                <tr>
+                <td><%= answer.word.content %></td>
+                <%# user answer %>
+                <td><%= answer.choice.content %></td>
+                <%# correct answer %>
+                <td><%= answer.word.correct_choice.content%></td>
+                <td>
+                    <% if answer.choice.correct? %>
+                        <p>✔︎</p>
+                    <%else%>
+                        <p>❌</p>
+                    <%end%>
+                </td>
+                </tr>
+        <%end%>
+    </tbody>
+    </table>
