@@ -7,21 +7,32 @@
               <%= gravatar_for current_user %>
             <%end%>
             <hr/>
-            <h3><%= current_user.name %></h3>
+            <h3><%=link_to current_user.name, root_path%></h3>
             <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-dark" %>
             <%= render 'users/stats_follow' %>
+            <hr/>
+            <h5>Words learned</h5>
+            <h3><%= link_to @answers.count, root_path(status: :words) %></h3>
             </div>
         </aside>
         <div class="col-7">
-            <div class="activity mt-3">
-                <h2>ACTIVITY</h2>
-                <% @activities.each do |activity| %>
-                    <% if activity.action_type == "Lesson" %>
-                        <%= render "users/dashbord_activity_lesson", activity: activity %>
-                    <%else %>
-                        <%= render "users/dashbord_activity_relationship", activity: activity %> 
+            <% if @activities %>
+                <div class="activity mt-3">
+                <%= will_paginate @activities %>
+                    <h2>ACTIVITY</h2>
+                    <% @activities.each do |activity| %>
+                        <% if activity.action_type == "Lesson" %>
+                            <%= render "users/dashbord_activity_lesson", activity: activity %>
+                        <%else %>
+                            <%= render "users/dashbord_activity_relationship", activity: activity %> 
+                        <% end %>
                     <% end %>
-                <% end %>
-            </div>
+                </div>
+            <%elsif @answers %>
+                <div class="words_learned mt-3">
+                    <h2>Words learned</h2>
+                    <%= render 'users/words'%>
+                </div>
+            <%end%>
         </div>
     </div>
