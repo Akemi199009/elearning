@@ -14,6 +14,4 @@ class StaticPagesController < ApplicationController
       render 'users/home_feed'
     end
   end
-
-
 end

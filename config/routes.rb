@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   resources :users, except: :new do
+    resources :words, only: :index
     member do
       get :following, :followers
     end
