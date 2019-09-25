@@ -11,10 +11,10 @@ development:
 test:
   <<: *default
   database: Akemi_Elearning_test
-  production:
-    adapter: postgresql
-    database: Akemi_Elearning_production
-    pool: 5
-    timeout: 5000
 
+production:
+  adapter: postgresql
+  database: Akemi_Elearning_production
+  pool: 5
+  timeout: 5000
 
