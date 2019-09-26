@@ -1,17 +1,20 @@
 <h1 class="lesson-title text-center">Lessons</h1>
 <p class="text-center">Language Acquisition Tools page is a great place to start!</p>
-<%= will_paginate @categories %>
-<ul class="nav nav-pills nav-warning float-right justify-content-end">
+<ul class="nav nav-tabs">
     <li class="nav-item">
-        <%= link_to "All", categories_path %>
-    </li>
-        <li class="nav-item">
-        <%= link_to "Learned", categories_path(status: :learned)%>
+        <%= link_to "All", categories_path,
+             class: "nav-link #{'active' if params[:status].nil? }"%>
     </li>
     <li class="nav-item">
-        <%= link_to "Not laernd", categories_path(status: :anlearned)%>
+        <%= link_to "Learned", categories_path(status: :learned), 
+            class: "nav-link #{'active' if params[:status] == "learned" }"%>
+    </li>
+    <li class="nav-item">
+        <%= link_to "Not laernd", categories_path(status: :anlearned), 
+            class: "nav-link #{'active' if params[:status] == "anlearned" }"%>
     </li>
 </ul>
+<%= will_paginate @categories %>
 <div class="row lesson-object">
     <% @categories.each do |category|%>
         <% if category.words.count > 0 %>
