@@ -1,4 +1,7 @@
 <h1 class="text-center">Users</h1>
+<%if @users.empty?%>
+<h5 class="text-center mt-5">The user was not found.</h5>
+<%end%>
 <%= will_paginate %>
 <div class="row mt-5">
     <%= render 'users' %>
