@@ -14,6 +14,15 @@
             class: "nav-link #{'active' if params[:status] == "anlearned" }"%>
     </li>
 </ul>
+<%if params[:status] == "anlearned" && @categories.empty? %>
+    <div class="messages">
+        <h5>You learned all the lessons.</h5>
+    </div>
+    <%elsif params[:status] == "learned" && @categories.empty? %>
+    <div class="messages">
+        <h5>You learned all the lessons.</h5>
+    </div>
+<%end%>
 <%= will_paginate @categories %>
 <div class="row lesson-object">
     <% @categories.each do |category|%>

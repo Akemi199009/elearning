@@ -225,7 +225,13 @@ article.card {
   border-width: 10px;
 }
 
-
+.messages {
+  height: 4rem;
+  h5 {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
 
 //----footer-----
 footer {
