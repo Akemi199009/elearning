@@ -1,0 +1,6 @@
+<div class="user-search">
+  <%= form_tag(users_path, :method => "get") do %>
+  <%= text_field_tag :search %> 
+  <%= submit_tag "Search" ,:name => nil ,class: "button is-info"%> 
+  <% end %>
+</div>

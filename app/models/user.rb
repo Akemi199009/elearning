@@ -55,6 +55,14 @@ def following?(other_user)
   following.include?(other_user)
 end
 
+def self.search(search) #self.はUser.を意味する
+  if search
+    where(['name LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。
+  else
+    all #全て表示させる
+ end
+end
+
 
 
 private
